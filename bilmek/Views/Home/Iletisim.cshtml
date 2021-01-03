@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="siteContent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+                <h2 class="baslik3">İletişim</h2>
+                <div class="adresRow">
+                    <div class="icon">
+                        <i class="glyphicon glyphicon-earphone"></i>
+                    </div>
+                    <div class="bilgi">
+                        <a href="tel:0 264 226 36 96">0 264 226 36 96</a>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="adresRow">
+                    <div class="icon">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </div>
+                    <div class="bilgi">
+                        <a href="mailto:info@birimza.com.tr">info@birimza.com.tr</a>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <h2 class="baslik3">Adres</h2>
+                <div class="adresRow">
+                    <div class="icon">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                    </div>
+                    <div class="bilgi">
+                        Henuz Dükkan Açmadık
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+            <div class="col-md-5 form-iletisim">
+                <h2 class="baslik3" style="padding:0;">Bizimle iletişime geçebilirsiniz...</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" name="ttAdiniz" id="ttAdiniz" class="form-control" placeholder="Adınız Soyadınız" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" name="ttEposta" id="ttEposta" class="form-control" placeholder="E-posta Adresiniz"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group" id="inputMesaj">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                    
+                    <textarea class="form-control" name="ttMesaj" id="ttMesaj" style="height:165px" placeholder="E-posta Adresiniz"></textarea>
+                </div>
+                <div class="input-group">
+                    <input  id="btnGonder" class="btn btnIletisim" value="Gönder" type="submit" />
+                    <span id="ltrJvs"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        var widgetId1;
+        var VerifyCode;
+
+        var verifyCallback = function (response) { VerifyCode = response; };
+        var onloadCallback = function () {
+            widgetId1 = grecaptcha.render('example1', {
+                'sitekey': '6Lcr2hgUAAAAAOHWnBf8Ob3RtJN2A7pY75uEhd15',
+                'callback': verifyCallback,
+            });
+        };
+        function cv2(oSrc, args) {
+            var IsCaptcha = grecaptcha.getResponse(widgetId1);
+            args.IsValid = (VerifyCode == IsCaptcha);
+        }
+    </script>
+}
+
+

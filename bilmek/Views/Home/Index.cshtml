@@ -1,0 +1,113 @@
+﻿@model IEnumerable<bilmek.Models.Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="bolum">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center bolumBaslik">
+                <br />
+                <div class="baslikGolgeli">
+                    <h3 class="baslikBg">Bİ'İMZA</h3>
+                    <h2 class="baslik1" style="font-family:Bahnschrift">Bir tıkla her şey çok kolay..</h2>
+                    <span class="cizgi">&nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bolum">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center bolumBaslik">
+                <div class="baslikGolgeli">
+                    <h3 class="baslikBg">YARDIM</h3>
+                    <h2 class="baslik1"style="font-family:Bahnschrift">Size <span class="w400">nasıl</span> <span class="w700">yardımcı</span> olabiliriz ?</h2>
+                    <span class="cizgi">&nbsp;</span>
+                </div>
+            </div>
+        </div>
+        <div class="row hizmetler">
+            <div class="col-md-4">
+                <div class="yardimKutu">
+                    
+                        <div class="yardimResim">
+                            <img src="~/images/cozum.png" alt="Çözüm" />
+                        </div>
+                        <div class="yardimBaslik">                        
+                                Çözüm
+                        </div>
+                        <div class="yardimYazi">
+                            Çözüm bulunmasını istediğiniz problemleri bize yazabilirsiniz.
+                        </div>
+                        <div class="yardimButton">
+                            <a href="/Home/Basvuru/Cozum">
+                                <span>YAZ</span>
+                            </a>
+                        </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="yardimKutu">
+               
+                        <div class="yardimResim">
+                            <img src="~/images/destek.png" alt="Destek" />
+                        </div>
+                        <div class="yardimBaslik">                           
+                                Destek
+                        </div>
+                        <div class="yardimYazi">
+                            Problemleriniz çözümü için aktif destek platformumuz.   
+                        </div>
+                        <div class="yardimButton">
+                            <a href="/Home/Basvuru/Destek">
+                                <span>YAZ</span>
+                            </a>
+                        </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="yardimKutu">
+                    
+                        <div class="yardimResim">
+                            <img src="~/images/kariyer.png" alt="Kariyer" />
+                        </div>
+                        <div class="yardimBaslik">
+                            Kariyer
+                        </div>
+                        <div class="yardimYazi">
+                            Bu takımda başarılı olmanın sınırı yok. Ekibimizin bir parçası olmak için bize yazabilirsiniz.
+                        </div>
+                        <div class="yardimButton">
+                            <a href="/Home/Basvuru/Kariyer">
+                                <span>BAŞVUR</span>
+                            </a>
+                        </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/flickity.pkgd.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $ustSlider = $('#slider').flickity({
+                cellAlign: 'center',
+                prevNextButtons: false,
+                contain: true,
+                autoPlay: 5000,
+                wrapAround: true
+            });
+        });
+    </script>
+}

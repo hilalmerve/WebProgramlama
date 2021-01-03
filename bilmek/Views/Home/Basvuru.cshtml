@@ -1,0 +1,71 @@
+﻿@model bilmek.Models.BasvuruIcerikModel
+@{
+    ViewBag.Title = "Basvuru";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="siteContent">
+    <div class="row">
+        <div class="container">
+            @using (Html.BeginForm("BasvuruEkle", "Home", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" id="BasvuruTuru" name="BasvuruTuru" value="@ViewBag.BasvuruTuru">
+        <div class="col-md-4 col-md-offset-1 form-iletisim">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <h2 class="baslik2">@ViewBag.BasvuruTuru</h2>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Adınız Soyadınız" })
+
+            </div>
+            <br />
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                @Html.TextBoxFor(m => m.Number, new { @class = "form-control", placeholder = "Telefon Numaranız", @type = "phonenumber" })
+
+            </div>
+            <br />
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                @Html.TextBoxFor(m => m.Mail, new { @class = "form-control", placeholder = "E-Mail Adresiniz", @type = "email" })
+            </div>
+            <br />
+            <br />
+          
+        </div>
+        <div class="col-md-6 form-iletisim">
+            <div class="form-group">
+                <h2 class="baslik2" style="visibility:hidden"> k  </h2>
+                <div class="col-md-9">
+                    <div class="input-group" id="inputMesaj">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                        <!--cols="40" rows="5"-->
+                        @Html.TextAreaFor(m => m.Mesaj, new { @class = "form-control", style = "height:165px", placeholder = "Mesajınız", @type = "text" })
+
+                    </div>
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <span class="btn default btn-file">
+                            <input type="file" id="file" name="file">
+                        </span>
+                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Kaldır     </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <br />
+            <br />
+            <br />
+            <input type="submit" name="Gönder" class="col-md-12  btn btnIletisim" />
+        </div>
+}
+        </div>
+    </div>
+</div>
+<br />
+<br />

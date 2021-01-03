@@ -1,0 +1,26 @@
+﻿@model IEnumerable<bilmek.Models.ReferansIcerikModel>
+@{
+
+    ViewBag.Title = "Referanslar";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="siteContent">
+    <div class="container">
+        <div class="referansIcerik">
+            <h2 class="baslik2">REFERANSLAR</h2>
+            <div class="row referanslar">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-5">
+                        <div class="refItem">
+                            <a href="@item.Url" target="_blank">
+                                <img src="data:image/png;base64,@System.Convert.ToBase64String(item.Resim)" alt="@item.ReferansAdi" width="175" height="120" />
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

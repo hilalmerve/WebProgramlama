@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-9" />
+    <meta name="author" content="biimza" />
+    <meta name="content-language" content="tr" />
+    <meta name="rating" content="All" />
+    <meta name="robots" content="index, follow" />
+    <title>Birimza</title>
+    <meta name="description" content="biimza" />
+    <meta name="keywords" content="biimza" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{
+        bool ilk = true;
+    }
+</head>
+
+<body>
+    <div id="@ViewBag.Header">
+        <div class="container">
+            <div class="row" id="ustBar" style="padding-bottom: 0px;">
+                <div class="col-md-2 logo"><a href="/"></a></div>
+
+                <div class="col-md-2" id="telNo"></div>
+
+                <a href="javascript:void(0);" id="toggle" class=""><span></span></a>
+                <div class="col-md-8 text-center">
+                    <nav id="menu" >
+                        <ul>
+                            <li><a href="/"style="color:black;background-color: #ff010159;border: 1px solid #ed0a32; border-radius: 25px">Anasayfa</a></li>
+                            <li><a href="/Home/Haberler"style="color:black;background-color: #ff010159;border: 1px solid #ed0a32; border-radius: 25px">Haberler</a></li>
+                            <li><a href="/Home/Referanslar"style="color:black;background-color: #ff010159;border: 1px solid #ed0a32; border-radius: 25px">Referanslar</a></li>
+                            <li><a href="/Home/Iletisim"style="color:black;background-color: #ff010159;border: 1px solid #ed0a32; border-radius: 25px">İletişim</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div id="slider" class="carousel" @ViewBag.CarouselVisible>
+            @if (ViewBag.ModelType == "Slider") { 
+            foreach (var item in Model)
+            {
+                if (ilk)
+                {
+                    ilk = false;
+
+                    <div class="carousel-cell" id="@Convert.ToString("slide"+item.Id)">
+                        <div class="cellText">
+                        </div>
+                        <a href="javascript:void(0);">
+                            <img src="data:image/png;base64,@System.Convert.ToBase64String(item.Resim)" width="1500" height="530" />
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="carousel-cell" id="@Convert.ToString("slide"+item.Id)">
+                        <div class="cellText">
+                        </div>
+                        <a href="javascript:void(0);">
+                            <img src="data:image/png;base64,@System.Convert.ToBase64String(item.Resim)" width="1500" height="530"/>
+                        </a>
+                    </div>
+                }
+            }
+
+            }
+
+        </div>
+    </div>
+    @RenderBody()
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 ftLogo">
+                    <a href="/Default.aspx">
+                        <img src="https://imageshack.com/a/img921/5609/kpWBUE.png" alt="bilmek - Bilgisayar Teknolojileri" />
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-6 ftLinks">
+                    <a href="/">Anasayfa</a><br />
+                    <a href="/Home/Basvuru">Çözümler</a>
+                </div>
+                <div class="col-md-2 col-xs-6 ftLinks">
+                    <a href="/Home/Haberler">Haberler</a><br />
+                    <a href="/Home/Referanslar">Referanslar</a><br />
+                    <a href="/Home/Iletisim">İletişim</a>
+                </div>
+               
+            <br /> <br /> <br /> <br />
+                    <div class="ftSosyal">
+                        <a href="" target="_blank"><img src="~/images/fb.png" alt="Facebook Sayfamız" /></a>
+                        <a href="" target="_blank"><img src="~/images/tw.png" alt="Twitter Sayfamız" /></a>
+                        <a href="" target="_blank"><img src="~/images/ig.png" alt="Instagram Sayfamız" /></a>
+                        <a href="" target="_blank"><img src="~/images/yt.png" alt="Youtube Sayfamız" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="copyright">
+        <div class="container">
+            copyright &copy @DateTime.Now.Year birimza
+            
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @ViewBag.script
+</body>
+</html>

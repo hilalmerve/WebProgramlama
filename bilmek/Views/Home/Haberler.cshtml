@@ -1,0 +1,29 @@
+﻿@model IEnumerable<bilmek.Models.HaberIcerikModel>
+@{
+    ViewBag.Title = "Haberler";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="siteContent">
+    <div class="container">        
+        <div class="row">
+            <h2 class="baslik2">HABERLER</h2>
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="haberKutu">
+                        <div class="haberResim">
+                            <img src="data:image/png;base64,@System.Convert.ToBase64String(item.Resim)" alt="Çözüm" width="280" height="150" />
+                        </div>
+                        <div class="haberBaslik">@item.CTitle</div>
+                        <div class="haberYazi">@Html.Raw(item.CFullContent)</div>
+                        <div class="row haberTarihGoruntu">
+                            <div class="col-md-6">@string.Format("{0:dd\\.MM\\.yyyy}", item.CreatedOn)</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
